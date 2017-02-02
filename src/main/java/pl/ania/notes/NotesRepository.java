@@ -25,11 +25,10 @@ public class NotesRepository {
         notesMap.put(id, new Note(id, note.getBody()));
         return id;
     }
-    //jakie jest powiązanie między id z mapy a id z notatki?
 
-    public Note delete(Note note) {
+    public void delete(Note note) { //czy nie lepiej zrobic id jako parametr?   zmieniłam na void
         notesMap.remove(note.getId());
-        return note;
+
     }
 
     public Note replaceNote(Note note) {

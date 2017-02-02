@@ -16,13 +16,27 @@ public class NoteService {
         this.notesRepository = notesRepository;
     }
 
-    private void changeNoteRequestToNote(NoteRequest noteRequest){
-        notesRepository.addNote(new Note(null, noteRequest.getBody()));
+    //zrobiłam zmianę (zwraca id).Dobrze?
+    public long changeNoteRequestToNote(NoteRequest noteRequest){
+        long id = notesRepository.addNote(new Note(null, noteRequest.getBody()));
+        return id;
+    }
+
+    public void delete(Note note){ //czy muszą tu być te metody: delete i replace?
+        notesRepository.delete(note);
+    }
+
+    public void replaceNote(Note note){
+        notesRepository.replaceNote(note);
     }
 
     public List<Note> getList(){
         return new ArrayList<>(notesRepository.getNotesMap().values());
     }
 
-
+    //dodałam metodę
+    public Note findNoteById(Long id) {
+        Note note = notesRepository.getNotesMap().get(id);
+        return note;
+    }
 }
