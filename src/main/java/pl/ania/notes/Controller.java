@@ -34,7 +34,7 @@ class Controller {
     ResponseEntity<Void> addNote(@RequestBody NoteRequest noteRequest){
         long id = noteService.save(noteRequest);
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setLocation(URI.create("/notesList/" + id));
+        httpHeaders.setLocation(URI.create("/notes/" + id));
         return new ResponseEntity<>(httpHeaders, HttpStatus.CREATED);
         //lub: return ResponseEntity.created(URI.create("/notes/" + id)).build();
 
@@ -51,8 +51,7 @@ class Controller {
 
     @DeleteMapping(path = "/{id}")
     void deleteNote(@PathVariable Long id){
-        Note note = noteService.findNoteById(id); //czy nie lepiej zrobic tak zeby nie musieć ciągle szukac danej notatki?
-        noteService.delete(note);
+        noteService.delete(id);
 
     }
 

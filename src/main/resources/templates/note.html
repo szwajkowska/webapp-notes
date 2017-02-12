@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/test_main.css">
+    <title>Uczę się</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="header">
+        <div class="centre">Header</div>
+    </div>
+    <div class="aside">
+        <div class="centre">Aside</div>
+    </div>
+    <div class="content">
+        <div class="centre">
+            <form action="/test" method="post">
+
+                <input id="costam" type="text" placeholder="imię" name="body">
+                <!--trzeba dodać atrybut name, żeby przegladarka wiedziala co to ma byc-->
+                <input type="submit" value="submit">
+
+            </form>
+            <div>
+               <p th:text = "${body}"></p>
+            </div>
+
+            <div class="centre">
+                <form action="/test/id" th:action="@{'/test/'+${id}}" method="post">
+                    <input type="submit" value="delete">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="centre">Footer</div>
+    </div>
+</div>
+</body>

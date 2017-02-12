@@ -19,8 +19,8 @@ public class NoteService {
         return id;
     }
 
-    public void delete(Note note) { //czy muszą tu być te metody: delete i replace?
-        notesRepository.delete(note);
+    public void delete(long id) { //czy muszą tu być te metody: delete i replace?
+        notesRepository.delete(id);
     }
 
 

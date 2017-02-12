@@ -33,7 +33,7 @@ public class NotesRepositoryTest {
         notesRepository.getNotesMap().put(note.getId(), note);
 
         //when
-        notesRepository.delete(note);
+        notesRepository.delete(1);
 
         //then
         Assert.assertFalse(notesRepository.getNotesMap().containsKey(note.getId()));

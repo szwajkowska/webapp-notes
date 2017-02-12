@@ -1,0 +1,52 @@
+
+body {
+
+ margin: 0;
+ margin: auto;
+ width: 70%;
+}
+
+.container{
+
+
+    height: 100%;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: #7B7D7F;
+}
+
+.aside {
+    width: 25%;
+    height: 1000px;
+    background-color: #E0DDFC;
+    float: left;
+ }
+
+ .content {
+    width: 75%;
+    height: 1000px;
+    background-color: #D3D2DA;
+    float: left;
+ }
+
+
+.centre {
+    text-align: center;
+    line-height: 75px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: Arial;
+}
+
+.footer {
+     width: 100%;
+     height: 60px;
+     background-color: #48484A;
+     float: left;
+    }
+
+
+

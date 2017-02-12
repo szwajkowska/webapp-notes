@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+<head>
+    <!--pozwala obsługiwać polskie znaki-->
+    <meta charset="utf-8">
+    <title>Lista notatek</title>
+    <link rel="icon" href="how2html.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/main.css">
+    <!--<style>.cien{text-shadow: 5px 5px;}</style>-->
+</head>
+<body>
+<!--h1 to nagłówek h1-największy h6 - najmniejszy-->
+<h1>Lista notatek</h1>
+<p> będzie niebieskie tło?</p>
+<div class="cien">Cień</div>
+<div class="normal">Taasdada dadad aasasf adasf
+    dddd
+</div>
+<div class="pre-wrap">Taasdada dadad aasasf adasf
+    dddd
+    <div class="nowrap">Taasdada dadad aasasf adasf
+        dddd
+    </div>
+    <div class="overflow">
+        Wartość scroll wymaga za każdym razem dodania paska przewijania,
+        nawet jak nie jest to konieczne, tzn. tekst bez problemu mieści
+        się w oknie i nie musimy go przewijać. Możemy to rozwiązać za pomocą wartości
+        auto (ang. automatycznie). Wartość ta sama dostosowuje kiedy scrollbar jest potrzebny.
+        Kiedy jest zbędny to
+    </div>
+    <hr>
+    <!--<label for="costam">Coś tam</label>-->
+    <!--<input id="costam" type="text" value="ania" disabled>-->
+    <form action="/test" method="post">
+
+        <input id="costam" type="text" placeholder="imię" name="body">
+        <!--trzeba dodać atrybut name, żeby przegladarka wiedziala co to ma byc-->
+        <input type="submit" value="submit">
+
+    </form>
+
+    <figure>
+        <img src="img/how2html.png" alt="logo" title="logo">
+        <!--czemu nie dziala obrazek?-->
+        <figcaption> logo</figcaption>
+    </figure>
+    <label for="dessert">Deser</label>
+    <select id="dessert" multiple>
+        <option value="Panna cotta">Panna cotta 75g</option>
+        <option value="Tiramisu" selected>Tiramisu 150g</option>
+        <option value="Creme brulle">Creme brulle 100g</option>
+    </select>
+    <select>
+        <optgroup label="Grupa 1">
+            <option>Opcja 1.1</option>
+            <option>Opcja 1.2</option>
+        </optgroup>
+        <optgroup label="Grupa 2">
+            <option>Opcja 2.1</option>
+            <option>Opcja 2.2</option>
+        </optgroup>
+    </select>
+    <ol>
+        <li th:each="prod : ${notes}" th:text="${prod.body}"></li>
+    </ol>
+    </div>
+</body>
+
+</html>
+
+<!--<strong>wyraz pogrubiony-->
+<!--<b> wyraz pogrubiony-->
+<!--<em> wyraz pochylony-->
+<!--<i> wyraz pochylony-->
+<!--<small> wyraz pomniejszony-->
+<!--<mark> podświetlony wyraz-->
+<!--<sup> indeks górny-->
+<!--<sub> indeks dolny-->
+<!--<s> wyraz nieaktualny-->
+<!--<ins> wyraz wstawiony-->
+<!--<del> wyraz usunięty-->
+
+
+<!--<a href="how2html.pl">kurs html</a> - a oznacza link, href to adres gdzie nas przekierowuje-->
+<!--_self - otwiera link w tym samym oknie / karcie (wartość domyślna)-->
+<!--_blank - otwiera link w nowej karcie-->
+<!--<a href="how2html.pl" target="_self">kurs html</a>-->
+<!--<a href="how2html.pl" target="_blank">kurs html</a>-->
+
+<!--<table>-->
+<!--<tr>-->
+<!--<td>1 wiersz 1 kolumna</td>-->
+<!--<td>1 wiersz 2 kolumna</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>2 wiersz 1 kolumna</td>-->
+<!--<td>2 wiersz 2 kolumna</td>-->
+<!--</tr>-->
+<!--</table>-->
+
+<!--<table>-->
+<!--<tr>-->
+<!--<th></th>-->
+<!--<th>Nagłówek kolumny</th>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<th>Nagłówek Wiersza</th>-->
+<!--<td>wiersz</td>-->
+<!--</tr>-->
+<!--</table>-->
+
+<!--header, nav, main, aside, footer, article, section {-->
+<!--display: block;-->
+<!--}-->
+
+<!--<input type="button">-->
+<!--<input type="color">-->
+<!--<input type="date">-->
+<!--<input type="datetime">-->
+<!--<input type="DatetimeLocal">-->
+<!--<input type="FileUpload">-->
+<!--<input type="hidden">-->
+<!--<input type="image">-->
+<!--<input type="month">-->
+<!--<input type="range">-->
+<!--<input type="search">-->
+<!--<input type="time">-->
+<!--<input type="url">-->
+<!--<input type="week">-->
+
+<!--<label for="price">Cena</label>-->
+<!--<input type="text" id="price">-->
+<!--lub-->
+<!--&lt;!&ndash;<label>Cena <input type="text"></label>-->
+
+<!--<input type="text" placeholder="Imię i Nazwisko">-->
+
+<!--<p>Dodatki:<p>-->
+
+<!--<label>-->
+<!--<input type="radio" name="food" value="Frytki" checked> Frytki-->
+<!--</label>-->
+<!--<label>-->
+<!--<input type="radio" name="food" value="Ziemniaki"> Ziemniaki-->
+<!--</label>-->
+<!--<label>-->
+<!--<input type="radio" name="food" value="Ryż"> Ryż-->
+<!--</label>-->

@@ -26,8 +26,8 @@ public class NotesRepository {
         return id;
     }
 
-    public void delete(Note note) { //czy nie lepiej zrobic id jako parametr?   zmieniłam na void
-        notesMap.remove(note.getId());
+    public void delete(long id) { //czy nie lepiej zrobic id jako parametr?   zmieniłam na void
+        notesMap.remove(id);
 
     }
 
