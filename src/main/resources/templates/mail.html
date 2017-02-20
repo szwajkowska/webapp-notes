@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/test_main.css">
+    <title>Wysyłam maila</title>
+</head>
+<body>
+<form action="/mail" method="post">
+
+    <input id="1" type="text" placeholder="treść maila" name="body">
+    <!--trzeba dodać atrybut name, żeby przegladarka wiedziala co to ma byc-->
+    <input type="submit" value="submit">
+
+</form>
+</body>

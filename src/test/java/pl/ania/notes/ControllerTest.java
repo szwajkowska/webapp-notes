@@ -17,18 +17,22 @@ import java.net.URI;
 public class ControllerTest {
 
     @Autowired
-    TestRestTemplate testRestTemplate;
+    private TestRestTemplate testRestTemplate;
 
-    @Autowired
-    NotesRepository notesRepository;
+    @Autowired//czemu jest autowired? Bo nie ma konstruktora?
+    private NotesRepository notesRepository;
 
     @Test
     public void shouldAddNote(){
         //given
         String body = "body";
         NoteRequest noteRequest = new NoteRequest(body);
-        //when
-        URI uri = testRestTemplate.postForLocation("/notes", noteRequest);
+        //whent
+        URI uri = testRestTemplate.postForLocation("/notes", noteRequest);//my (test) wysylamy posta do kontrolera
+//        ResponseEntity response = testRestTemplate.postForEntity("/test", noteRequest, Void.class);//my (test) wysylamy posta do kontrolera
+//        System.out.println(response);
+//        URI uri = response.getHeaders().getLocation();
+        System.out.println(uri);
         //then
         Assert.assertEquals(1, notesRepository.getNotesMap().size());
         Assert.assertEquals(body, notesRepository.getNotesMap().get(1L).getBody());
@@ -39,7 +43,7 @@ public class ControllerTest {
         Assert.assertEquals(body, note.getBody());
 
         //when
-        testRestTemplate.delete(uri.toString());
+        testRestTemplate.delete(uri.toString());//skad sie bierze w ścieżce id?
         //then
         Assert.assertEquals(0, notesRepository.getNotesMap().size());
         //and
