@@ -1,11 +1,13 @@
 package pl.ania.notes;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@SessionScope//skąd się wzięłą ta adnotacja?
 public class NoteService {
 
     private NotesRepository notesRepository;
