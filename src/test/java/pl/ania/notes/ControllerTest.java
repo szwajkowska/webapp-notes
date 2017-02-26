@@ -27,7 +27,7 @@ public class ControllerTest {
         //given
         String body = "body";
         NoteRequest noteRequest = new NoteRequest(body);
-        //whent
+        //when
         URI uri = testRestTemplate.postForLocation("/notes", noteRequest);//my (test) wysylamy posta do kontrolera
 //        ResponseEntity response = testRestTemplate.postForEntity("/test", noteRequest, Void.class);//my (test) wysylamy posta do kontrolera
 //        System.out.println(response);

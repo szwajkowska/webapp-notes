@@ -31,6 +31,7 @@ dependencies {
     compile 'org.thymeleaf:thymeleaf-spring4:3.0.2.RELEASE'
     compile group: 'org.springframework', name: 'spring-context-support', version: '4.2.4.RELEASE'
     compile group: 'javax.mail', name: 'mail', version: '1.4'
+    compile("org.springframework.boot:spring-boot-starter-security")
 
 }
 

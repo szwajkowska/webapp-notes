@@ -10,6 +10,8 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class NotesRepository {
 
+
+
     private final Map<Long, Note> notesMap = new HashMap<>();
     private final AtomicLong counter = new AtomicLong();
 

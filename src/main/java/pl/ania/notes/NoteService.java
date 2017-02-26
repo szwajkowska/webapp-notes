@@ -10,33 +10,33 @@ import java.util.List;
 @SessionScope//skąd się wzięłą ta adnotacja?
 public class NoteService {
 
-    private NotesRepository notesRepository;
+    private UserRepository userRepository;
 
-    public NoteService(NotesRepository notesRepository) {
-        this.notesRepository = notesRepository;
+    public NoteService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public long save(NoteRequest noteRequest) {
-        long id = notesRepository.addNote(new Note(null, noteRequest.getBody()));
+    public long save(NoteRequest noteRequest, String user) {
+        long id = userRepository.addNote(new Note(null, noteRequest.getBody()), user);
         return id;
     }
 
-    public void delete(long id) { //czy muszą tu być te metody: delete i replace?
-        notesRepository.delete(id);
+    public void delete(long id, String user) { //czy muszą tu być te metody: delete i replace?
+        userRepository.delete(id, user);
     }
 
 
-    public List<Note> getList() {
-        return new ArrayList<>(notesRepository.getNotesMap().values());
+    public List<Note> getList(String user) {
+        return new ArrayList<>(userRepository.getNotesMap(user).values());
     }
 
-    public Note findNoteById(Long id) {
-        Note note = notesRepository.getNotesMap().get(id);
+    public Note findNoteById(Long id, String user) {
+        Note note = userRepository.getNotesMap(user).get(id);
         return note;
     }
 
-    void update(NoteRequest noteRequest, Long id){
-        notesRepository.replaceNote(new Note(id, noteRequest.getBody()));
+    void update(NoteRequest noteRequest, Long id, String user){
+        userRepository.replaceNote(new Note(id, noteRequest.getBody()), user);
     }
 
 }
