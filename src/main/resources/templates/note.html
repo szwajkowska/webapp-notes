@@ -5,30 +5,29 @@
     <link rel="stylesheet" href="/css/test_main.css">
     <title>Uczę się</title>
 </head>
-
 <body>
 <div class="container">
     <div class="header">
         <div class="centre">Header</div>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        <a href="/main">Wróć</a>
     </div>
     <div class="aside">
         <div class="centre">Aside</div>
     </div>
     <div class="content">
         <div class="centre">
-            <form action="/test" method="post">
-
-                <input id="costam" type="text" placeholder="imię" name="body">
-                <!--trzeba dodać atrybut name, żeby przegladarka wiedziala co to ma byc-->
+            <form action="/main" method="post">
+                <input id="id" type="text" placeholder="imię" name="body">
                 <input type="submit" value="submit">
-
             </form>
             <div>
                <p th:text = "${body}"></p>
             </div>
-
             <div class="centre">
-                <form action="/test/id" th:action="@{'/test/'+${id}}" method="post">
+                <form action="/main/id" th:action="@{'/main/'+${id}}" method="post">
                     <input type="submit" value="delete">
                 </form>
             </div>

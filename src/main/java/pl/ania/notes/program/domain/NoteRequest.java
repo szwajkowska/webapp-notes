@@ -1,11 +1,10 @@
-package pl.ania.notes;
+package pl.ania.notes.program.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class NoteRequest {
-
 
     private final String body;
 

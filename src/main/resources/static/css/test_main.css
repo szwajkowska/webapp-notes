@@ -1,4 +1,3 @@
-
 body {
 
  margin: 0;
@@ -7,14 +6,12 @@ body {
 }
 
 .container{
-
-
     height: 100%;
 }
 
 .header {
     width: 100%;
-    height: 100px;
+    height: 130px;
     background-color: #7B7D7F;
 }
 
@@ -46,7 +43,7 @@ body {
      height: 60px;
      background-color: #48484A;
      float: left;
-    }
+ }
 
 
 

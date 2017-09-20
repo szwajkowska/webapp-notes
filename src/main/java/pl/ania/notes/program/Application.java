@@ -1,18 +1,19 @@
-package pl.ania.notes;
+package pl.ania.notes.program;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-
-import java.nio.charset.StandardCharsets;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 @SpringBootApplication
 public class Application {
+
+
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -43,5 +44,14 @@ public class Application {
         thymeleafViewResolver.setCharacterEncoding(UTF_8.name());
         return thymeleafViewResolver;
     }
+
+    @Bean(name = "messageSource")
+    ResourceBundleMessageSource resourceBundleMessageSource(){
+        ResourceBundleMessageSource resourceBundleMessageSource = new ResourceBundleMessageSource();
+        resourceBundleMessageSource.setBasenames("messages");
+        resourceBundleMessageSource.setDefaultEncoding(UTF_8.name());
+        return resourceBundleMessageSource;
+    }
+
 
 }

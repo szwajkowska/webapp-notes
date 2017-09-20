@@ -1,60 +1,52 @@
-package pl.ania.notes;
+package pl.ania.notes.program.api;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.ania.notes.program.domain.Note;
+import pl.ania.notes.program.domain.NoteRequest;
+import pl.ania.notes.program.domain.NoteService;
+import pl.ania.notes.program.domain.UserList;
 
 import javax.servlet.http.HttpServletResponse;
-import java.net.URI;
 import java.security.Principal;
 
 @org.springframework.stereotype.Controller
-@RequestMapping(path = "/test")
+@RequestMapping("/main")
 public class ViewController {
-    private final NoteService noteService;
 
-    public ViewController(NoteService noteService) {
+    private final NoteService noteService;
+    private final UserList userList;
+
+    public ViewController(NoteService noteService, UserList userList) {
         this.noteService = noteService;
+        this.userList = userList;
     }
 
     @GetMapping
-    String test(ModelMap model, Principal principal) {
+    String showNotes(ModelMap model, Principal principal) {
         String name = principal.getName();
-        model.put("notes", noteService.getList(name));
-        return "test";  //jak zrobić żeby wyświetlał się plik list.jsp?
-    }
-
-    @GetMapping("/login")
-    String log(){
-        return "login";
+        model.put("notes", noteService.getAll(name));
+        return "notes";
     }
 
     @PostMapping
-//    String addNote(@RequestBody NoteRequest noteRequest, ModelMap model){
     String addNote(@RequestParam(value = "body") String body, ModelMap model, HttpServletResponse response,
                    Principal principal) {
         String name = principal.getName();
         NoteRequest noteRequest = new NoteRequest(body);
-        long id = noteService.save(noteRequest, name);
-        response.addHeader("Location", "/test/" + id );
-        model.put("notes", noteService.getList(name));
-        return "test";
-
+        String id = noteService.save(noteRequest, name);
+        response.addHeader("Location", "/main/" + id);
+        model.put("notes", noteService.getAll(name));
+        return "notes";
     }
 
-//    @GetMapping("/a")
-//    String showPage(){
-//        return "login";
-//    }
-
     @GetMapping(path = "/{id}")
-    String showNoteById(@PathVariable long id, ModelMap model, Principal principal) {
-        String name = principal.getName();
-        Note note = noteService.findNoteById(id, name);
+    String showNoteById(@PathVariable String id, ModelMap model) {
+        Note note = noteService.findNoteById(id);
 
         if (note == null) {
             return "wrong_id";
@@ -66,12 +58,10 @@ public class ViewController {
     }
 
     @PostMapping(path = "/{id}")
-    String deleteNote(@PathVariable long id, ModelMap model, Principal principal) {
+    String deleteNote(@PathVariable String id, ModelMap model, Principal principal) {
         String name = principal.getName();
-        noteService.delete(id, name);
-        model.put("notes", noteService.getList(name));
-        return "redirect:/test";
+        noteService.delete(id);
+        model.put("notes", noteService.getAll(name));
+        return "redirect:/main";
     }
-
-
 }

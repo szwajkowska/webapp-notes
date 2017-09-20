@@ -1,7 +1,6 @@
-package pl.ania.notes;
+package pl.ania.notes.program.api;
 
 
-import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StartController {
 
     @GetMapping
-    String showLoginPage(){
+    String showLoginPage() {
         return "goToLoginPage";
     }
-
-
 }
