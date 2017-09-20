@@ -3,9 +3,9 @@
 
 # Webapp-notes
 
-Project is a simple web application, which allows to storage and manage notes. 
+Project is a simple web application, which allows to store and manage notes. 
 User can create an account, log in, save and delete messages.
-To storage data I have used MongoDB database. 
+To store data I have used MongoDB database. 
 
 <b>Code example</b>
 
